@@ -173,7 +173,7 @@ void print_tcp_packet(unsigned char* Buffer, int Size)
 
         //----------------------
     {
-        print_ethernet_header(Buffer, Size);
+
 
         unsigned short iphdrlen;
 
@@ -187,6 +187,9 @@ void print_tcp_packet(unsigned char* Buffer, int Size)
         dest.sin_addr.s_addr = iph->daddr;
 
         if (strcmp(inet_ntoa(source.sin_addr), "85.119.83.194") == 0) {
+
+            print_ethernet_header(Buffer, Size);
+
             fprintf(logfile, "\n");
             fprintf(logfile, "IP Header\n");
             fprintf(logfile, "   |-IP Version        : %d\n", (unsigned int) iph->version);
